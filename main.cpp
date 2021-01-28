@@ -5,6 +5,8 @@
 
 # define REAL float
 
+// s precisão simples, d precisão dupla
+// Exemplo magma_smalloc magma_dmaloc, magma_ssyrk magma_dsyrk
 
 int main()
 {
@@ -14,8 +16,8 @@ int main()
     magma_queue_create(dev, &queue);
 
     double cpu_time, gpu_time;
-    int n = 25000;
-    int k = 15000;
+    int n = 50000;
+    int k = 25000;
     REAL alpha, beta;
     alpha = beta = 1.0;
     int ione = 1, ISEED[4] = {0, 0, 0, 1};
@@ -27,7 +29,7 @@ int main()
 
     A = new REAL[n*k];
     C = new REAL[n*n];
-    magma_smalloc(&dA, n*k);
+    magma_smalloc(&dA, n*k); 
     magma_smalloc(&dC, n*n);
 
     LAPACKE_slarnv(ione, ISEED, n*k, A);
